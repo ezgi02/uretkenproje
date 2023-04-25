@@ -1,13 +1,16 @@
-import firebase from 'firebase'
+import { initializeApp } from "firebase/app";
 
-const firebaseApp=firebase.initializeApp({
-    apiKey: "AIzaSyAxH0elQGWU5Qs5C8zEzQU6uQ3W1UriXbo",
-    authDomain: "fir-app2023-89363.firebaseapp.com",
-    projectId: "fir-app2023-89363",
-    storageBucket: "fir-app2023-89363.appspot.com",
-    messagingSenderId: "326423112417",
-    appId: "1:326423112417:web:2a1ca7cc1691997e3a65a0",
-    measurementId: "G-F74KDZQDBF"
-})
-const database=firebaseApp.firestore();
-export default database;
+import { getFirestore } from "@firebase/firestore";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAXS9cD6epCcK5xSge1JeEu0smYkU79UMk",
+  authDomain: "to-do-list-77173.firebaseapp.com",
+  projectId: "to-do-list-77173",
+  storageBucket: "to-do-list-77173.appspot.com",
+  messagingSenderId: "383876156500",
+  appId: "1:383876156500:web:e5e6dcf7c27b0214c531c1",
+  measurementId: "G-VWKFMBYJ76"
+};
+const app = initializeApp(firebaseConfig);
+const db=getFirestore(app)
+export {db}

@@ -1,37 +1,48 @@
 *{
-  margin:0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: rgb(175, 192, 182);
+}
+h1{
+  text-align: center;
+  color: brown;
 }
 header{
+  margin-top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, a0.3);
 }
 input,button{
   padding: 0.3rem;
   margin-left: 10px;
   font-size: 1rem;
   cursor: pointer;
+  background-color: aliceblue;
+}
+button{
+  background-color: rgb(196, 94, 27);
+  color: white;
 }
 .messages{
-  width: 60%;
+  width: 80%;
   margin: auto;
+
 }
 ul{
   width: 50%;
   margin: auto;
-  list-style:none;
- 
-
+  list-style-type: none;
+  
 }
-ul li{ 
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  background: lightgray;
+ul li{
+  display: flex;
+  justify-content:space-between ;
+  background-color: aqua;
   padding: 0.5rem;
-  margin-top: 10px;
-  border-radius: 10px;
+  margin-top: 8px;
+  border-radius:5px ;
+
 }

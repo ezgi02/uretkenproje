@@ -1,35 +1,43 @@
 import React,{useState,useEffect} from 'react';
-import database from './firebase'
-import firebase from 'firebase'
+
+import firebase from './firebase'
+
+import {db} from './firebase'
 import './App.css';
 
+
 function App() {
-const[input,setinput]=useState("")
+  const[input,setinput]=useState("")
 const [values,setvalues]=useState([])
 useEffect(()=>{
-  database.collection("messages").onSnapshot(snanshop=>setvalues(snanshop.docs.map(doc=>({
+ 
+  db.collection("messages").orderBy("timestamp","desc").onSnapshot(snapshop=>setvalues(snapshop.docs.map(doc=>({
     id:doc.id,data:doc.data()
   }))))
 },[])
-function savetodatabase(value){
-  database.collection("messages").add({
-    message:input,
-    timestamp:firebase.firestore.FielValue.serverTimestamp(),
+function ekle(value){
+  db.collection("messages").add({
+    message:value,
+    timestamp:firebase.firestore.FieldValue.serverTimestamp(),
   })
   setinput("")
 }
+function silveri(value){
+  db.collection("messages").doc(value).delete()
+}
+
   return (
     <div className="App">
-      <header >
-        <header>
-          <input type='text'placeholder='Data input..' value={input} onChange={(e)=>setinput(e.target.value)} />
-          <button disabled={!input}>Save to database</button>
-        </header>
+      <h1>Yapilacaklar Listesi</h1>
+      <header>
+        <input type='text' placeholder='Yeni görev ekle' value={input}onChange={(e)=>setinput(e.target.value)}/>
+        <button disabled={!input} onClick={()=>ekle(input)}>Ekle</button>
       </header>
       <div className='messages'>
-        {values.map(item=>(<ul><li>{item.data.message}</li></ul>))}
+        {values.map(item=>(<ul><li>{item.data.message}<div><button onClick={()=>silveri(item.id)}>Sil</button><button>Düzenle</button></div></li></ul>))}
       </div>
-    
+      
+      
     </div>
   );
 }
